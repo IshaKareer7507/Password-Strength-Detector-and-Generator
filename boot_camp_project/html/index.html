@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PASSWORD STRENGTH TESTER</title>
+    <link rel="stylesheet" type="text/css" href="/html/style_new.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <div class="tester">
+        <heading><b>P</b>ASSWORD <b>S</b>TRENGTH <b>T</b>ESTER</heading>
+        <div class="form">
+            <div class="field">
+                    <input type="Email" placeholder="example@gmail.com"  title="mail" id="email" required>
+                    <p id="email_error" class="formerror"></p><br><br>
+                    <input  type="password" id="password-field" placeholder="Enter your password">
+                <div class="toggle-password">
+                    <i class="fa fa-eye"></i>
+                    <i class="fa fa-eye-slash"></i>
+                </div>
+                
+                <p id ="message">Password is <span id="strength"></span></p>
+            </div>
+            <div class="indicator">
+                <span class="weak"></span>
+                <span class="medium"></span>
+                <span class="strong"></span>
+            </div>
+            
+        </div>
+    </div>
+
+    
+    <script>
+        function clearErrors(){
+            errors = document.getElementsByClassName("formerror");
+            for (let e of errors){
+                e.indexHTML = "error";
+            }
+        }
+
+        function setError(id,error){
+            let element = document.getElementById(id);
+            element.innerHTML = error;
+        }
+        function validateForm(){
+            let returnvalue = true;
+            clearErrors();
+            let email = document.forms["valform"]["email"].value;
+            if (email.length > 10){
+                setError("email_error" , "Error : Length of email is too long !!");
+                returnvalue = false;
+        }
+        return returnvalue;
+        }
+
+        function _id(name){
+            return document.getElementById(name);
+        }
+        function _class(name){
+            return document.getElementsByClassName(name);
+        }
+        _class("toggle-password")[0].addEventListener("click", function(){
+            _class("toggle-password")[0].classList.toggle("active");
+            if(_id("password-field").getAttribute("type")== "password"){
+                _id("password-field").setAttribute("type", "text");
+            }
+            else{
+                _id("password-field").setAttribute("type", "password")
+            }
+        });
+
+
+        const indicator = document.querySelector(".indicator");
+        const input = document.querySelector("input");
+        const weak = document.querySelector(".weak");
+        const  medium= document.querySelector(".medium");
+        const strong = document.querySelector(".strong");
+        const text = document.querySelector(".text");
+
+       function Toggle(){
+        var temp = document.getElementById("password-field");
+        if(temp.type == "password"){
+            temp.type = "text";
+        }
+        else{
+            temp.type = "password";
+        }
+       }
+        var pass = document.getElementById("password-field");
+        var msg = document.getElementById("message");
+        var str = document.getElementById("strength");
+
+        pass.addEventListener('input',()=> {
+            if(pass.value.length > 0){
+                msg.style.display ="block";
+            }
+            else{
+                msg.style.display ="none";
+            }
+
+            
+            if(pass.value.length < 4){
+                str.innerHTML="weak";
+                pass.style.borderColor= "red";
+                msg.style.color="red";
+            }
+            else if(pass.value.length >= 4 && pass.value.length <8 ){
+                str.innerHTML="medium";
+                pass.style.borderColor= "yellow";
+                msg.style.color="yellow";
+            }
+            else if(pass.value.length >= 8){
+                str.innerHTML="strong";
+                pass.style.borderColor= "green";
+                msg.style.color="green";
+            }
+        });
+    </script>
+
+</body>
+</html>

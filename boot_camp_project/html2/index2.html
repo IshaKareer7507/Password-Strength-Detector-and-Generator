@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STRONG PASSWORD GENERATOR</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/html2/style2.css">
+</head>
+<body>
+    <div class="center">
+        <heading><b>R</b>ANDOM <b>P</b>ASSWORD<br><b> G</b>ENERATOR</heading>
+        <div class="form">
+            <div class="form-element">
+                <input type="password" id="password-field">
+                <div class="toggle-password">
+                    <i class="fa fa-eye"></i>
+                    <i class="fa fa-eye-slash"></i>
+                </div>
+                <div class="password-policies">
+                    <div class="policy-length">
+                        8 Characters
+                    </div>
+                    <div class="policy-number">
+                        Contain Number
+                    </div>
+                    <div class="policy-uppercase">
+                        Contain Uppercase
+                    </div>
+                    <div class="policy-lowercase">
+                        Contain Lowercase
+                    </div>
+                    <div class="policy-special">
+                        Contain Special Character
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function _id(name){
+            return document.getElementById(name);
+        }
+        function _class(name){
+            return document.getElementsByClassName(name);
+        }
+        _class("toggle-password")[0].addEventListener("click", function(){
+            _class("toggle-password")[0].classList.toggle("active");
+            if(_id("password-field").getAttribute("type")== "password"){
+                _id("password-field").setAttribute("type", "text");
+            }
+            else{
+                _id("password-field").setAttribute("type", "password")
+            }
+        });
+
+        _id("password-field").addEventListener("focus",function(){
+            _class("password-policies")[0].classList.add("active");
+        });
+
+        _id("password-field").addEventListener("blur",function(){
+            _class("password-policies")[0].classList.remove("active");
+        });
+
+        _id("password-field").addEventListener("keyup", function(){
+            let password= _id("password-field").value;
+//UPPERCASE
+            if(/[A-Z]/.test(password)){
+                _class("policy-uppercase")[0].classList.add("active");
+            }
+            else{
+                _class("policy-uppercase")[0].classList.remove("active");
+            }
+//NUMBERS
+            if(/[0-9]/.test(password)){
+                _class("policy-number")[0].classList.add("active");
+            }
+            else{
+                _class("policy-number")[0].classList.remove("active");
+            }
+
+//LOWERCASE
+            if(/[a-z]/.test(password)){
+                _class("policy-lowercase")[0].classList.add("active");
+            }
+            else{
+                _class("policy-lowercase")[0].classList.remove("active");
+            }
+
+//SPECIAL CHARACTERS
+            if(/[^A-Za-z0-9]/.test(password)){
+                _class("policy-special")[0].classList.add("active");
+            }
+            else{
+                _class("policy-special")[0].classList.remove("active");
+            }
+
+//LENGTH
+            if(password.length > 7){
+                _class("policy-length")[0].classList.add("active");
+            }
+            else{
+                _class("policy-length")[0].classList.remove("active");
+            }
+
+
+        });
+    </script>
+</body>
+</html>

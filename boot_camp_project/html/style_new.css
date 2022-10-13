@@ -1,0 +1,177 @@
+*{
+    margin: 0%;
+    padding: 0%;
+    font-family:'Poppins', sans-serif;
+    box-sizing: border-box;
+    align-self: center;
+}
+
+body{
+    height: 700px;
+    align-self: center;
+    display:flex ;
+    background: black;
+    font-family:Arial, Helvetica, sans-serif;
+    background-image:url(/animation.gif);
+    background-size:auto;
+    background-position: fixed;
+}
+
+.tester{
+        left: 300px;
+        width: 600px;
+        max-width:50%;
+        height: 500px;
+        background: rgb(2, 15, 56);
+        padding: 30px 30px;
+        border-radius: 5px;
+        box-shadow: 0 0 5px royalblue;
+        align-content: center;
+        position: absolute;
+        align-content: center;
+        align-self: center;
+        height: 350px;
+        top: 25%;
+        left: 30%;
+        transform: translateX(-50%, -50%);
+    }
+    
+.tester heading{
+    padding-top: 15px;
+    font-size: 30px;
+    font-weight: 1000px;
+    line-height:120px;
+    color: WHITE;
+}
+.tester heading  b{
+    color: red;
+    font-weight: 1200px;
+    font-size: 40px;
+    font-family: sans-serif;
+}
+
+.tester .form{
+    width: 400px;
+}
+.form .field{
+    position: relative;
+}
+.form .field input{
+    top: 100px;
+    width: 100%;
+    padding: 10px;
+    font-size: 18px;
+    border: 1 px solid black;
+    box-sizing:  100px;
+    border-radius: 50px;
+    outline: none;
+    text-indent: 10px;
+}
+/* .form .field input:focus{
+    border-color: rgb(40, 39, 39);
+    color: rgb(40, 39, 39);
+    box-shadow: inset 0 0 3px rgb(40, 39, 39);
+} */
+
+.form .field .toggle-password{
+    position:absolute;
+    height: 400px;
+    width: 40px;
+    top: 2px;
+    right: 5px;
+    color: black;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 200px;
+    font-size: 20px;
+    cursor: pointer;
+}
+.form .field .toggle-password.active i.fa-eye{
+    display: none;
+}
+.form .field .toggle-password.active i.fa-eye-slash{
+    display: inline-block;
+}
+.form .field .toggle-password i.fa-eye-slash{
+    display: none;
+}
+
+.form .indicator{
+    height: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 0;
+    display: none;
+}
+.form .indicator span{
+    width: 100%;
+    height: 100%;
+    background: rgb(40, 39, 39);
+    border-radius: 10px;
+    position: relative;
+}
+.form .indicator span.medium{
+    margin: 0 15px;
+}
+.form .indicator span:before{
+    content: '';
+    position:relative;
+    top: 0;
+    height: 100;
+    width: 100%;
+    background: grey;
+    border-radius: 5px;
+}
+.form .indicator span.active.weak:before{
+    background-color: red;
+}
+.form .indicator span.active.medium:before{
+    background-color: yellow;
+}
+.form .indicator span.active.strong:before{
+    background-color: green;
+}
+
+.form #message{
+    position: absolute;
+    color: rgb(40, 39, 39);
+    font-size: 20px;
+    margin-bottom: -90px;
+    display: none;
+}
+
+::placeholder{
+    font-size: 20px;
+} 
+.form .form-element .password-policies{
+    position: relative;
+    top: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    padding: 0px;
+    height: 0px;
+    background: white;
+    border-radius: 5px;
+    margin-top: 10px;
+    box-sizing: border-box;
+    opacity: 1;
+    overflow: hidden;
+    transition: height 300ms ease-in-out,
+                opacity 300ms ease-in-out;
+}
+.form .form-element .password-policies.active{
+    opacity: 1;
+    padding: 10px;
+    height: 200px;
+}
+.form .form-element .password-policies >div{
+    margin: 15px 10px;
+    font-weight: 600;
+    color: #888;
+}
+.form .form-element .password-policies >div.active{
+    color: black;
+}
